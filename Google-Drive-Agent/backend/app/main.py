@@ -7,7 +7,7 @@ from .agent import agent_executor
 app = FastAPI(title="Drive Agent API")
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"], # In production, replace "*" with your Streamlit URL
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -25,8 +25,12 @@ async def chat(request: ChatRequest):
     try:
         input_message = HumanMessage(content=request.message)
         result_state = agent_executor.invoke({"messages": [input_message]})
-        final_response = result_state["messages"][-1].content
+        last_message = result_state["messages"][-1]
         
+        if isinstance(last_message.content, list):
+            final_response = "".join([part.get("text", "") for part in last_message.content if isinstance(part, dict)])
+        else:
+            final_response = str(last_message.content)
         return {"response": final_response}
     except Exception as e:
         return {"error": str(e)}
