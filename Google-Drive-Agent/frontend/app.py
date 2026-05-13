@@ -21,7 +21,7 @@ if prompt := st.chat_input("How can I help with your Drive?"):
             response = requests.post(
                 "https://google-drive-ai.onrender.com/chat", 
                 json={"message": prompt},
-                timeout=30 
+                timeout=120 
             )
             if response.status_code == 200:
                 data = response.json()
