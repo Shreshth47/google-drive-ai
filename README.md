@@ -1,6 +1,6 @@
 # 📂 Google Drive AI Assistant
 
-A conversational AI agent built to help users search, filter, and discover files within a Google Drive directory using natural language. This project leverages **LangGraph** for stateful agentic orchestration and **Google Gemini** for intelligent tool calling.
+A conversational AI agent built to help users search, filter, and discover files within a Google Drive directory using natural language. This project leverages **LangGraph** for stateful agentic orchestration and **Groq** for intelligent tool calling.
 
 ---
 
@@ -26,7 +26,7 @@ A conversational AI agent built to help users search, filter, and discover files
 
 | Component | Technology |
 | :--- | :--- |
-| **LLM** | Google Gemini (gemini-2.5-flash-lite) |
+| **LLM** | Groq Llama-3.3-70B |
 | **Agent Framework** | LangGraph |
 | **Backend** | Python, FastAPI, Uvicorn |
 | **Frontend** | Streamlit |
@@ -54,6 +54,7 @@ Create a `.env` file in the `backend/` directory:
 ```text
 GOOGLE_API_KEY="your_gemini_api_key"
 GCP_SERVICE_ACCOUNT_JSON='{"your_service_account_details"}'
+GROQ_API_KEY="your_groq_api_key"
 ```
 
 ### 2. Local Development
