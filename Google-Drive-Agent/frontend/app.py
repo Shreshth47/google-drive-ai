@@ -19,7 +19,7 @@ if prompt := st.chat_input("How can I help with your Drive?"):
     try:
         with st.spinner("Agent is searching..."):
             response = requests.post(
-                "http://127.0.0.1:8000/chat", 
+                "https://google-drive-ai.onrender.com", 
                 json={"message": prompt},
                 timeout=30 
             )
